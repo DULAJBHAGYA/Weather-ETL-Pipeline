@@ -1,0 +1,37 @@
+2025-10-18 09:48:03,557 | INFO | src.logger:info:42 | Starting Weather ETL Pipeline with command: run
+2025-10-18 09:48:03,575 | INFO | src.logger:info:42 | Starting Weather ETL Pipeline
+2025-10-18 09:48:03,575 | INFO | src.logger:info:42 | Processing 5 locations
+2025-10-18 09:48:03,955 | ERROR | src.logger:error:50 | Failed to fetch weather data for Colombo,Sri Lanka: 401 Client Error: Unauthorized for url: https://api.openweathermap.org/data/2.5/weather?appid=dd0c15cfa7c0f385e46fba5e11b424a1&q=Colombo%2CSri+Lanka
+2025-10-18 09:48:03,955 | WARNING | src.logger:warning:46 | Attempt 1 failed for Colombo,Sri Lanka. Retrying in 5 seconds...
+2025-10-18 09:48:09,176 | ERROR | src.logger:error:50 | Failed to fetch weather data for Colombo,Sri Lanka: 401 Client Error: Unauthorized for url: https://api.openweathermap.org/data/2.5/weather?appid=dd0c15cfa7c0f385e46fba5e11b424a1&q=Colombo%2CSri+Lanka
+2025-10-18 09:48:09,176 | WARNING | src.logger:warning:46 | Attempt 2 failed for Colombo,Sri Lanka. Retrying in 5 seconds...
+2025-10-18 09:48:14,389 | ERROR | src.logger:error:50 | Failed to fetch weather data for Colombo,Sri Lanka: 401 Client Error: Unauthorized for url: https://api.openweathermap.org/data/2.5/weather?appid=dd0c15cfa7c0f385e46fba5e11b424a1&q=Colombo%2CSri+Lanka
+2025-10-18 09:48:14,390 | ERROR | src.logger:error:50 | All retries failed for Colombo,Sri Lanka: API request failed: 401 Client Error: Unauthorized for url: https://api.openweathermap.org/data/2.5/weather?appid=dd0c15cfa7c0f385e46fba5e11b424a1&q=Colombo%2CSri+Lanka
+2025-10-18 09:48:14,646 | ERROR | src.logger:error:50 | Failed to fetch weather data for London,UK: 401 Client Error: Unauthorized for url: https://api.openweathermap.org/data/2.5/weather?appid=dd0c15cfa7c0f385e46fba5e11b424a1&q=London%2CUK
+2025-10-18 09:48:14,646 | WARNING | src.logger:warning:46 | Attempt 1 failed for London,UK. Retrying in 5 seconds...
+2025-10-18 09:48:19,869 | ERROR | src.logger:error:50 | Failed to fetch weather data for London,UK: 401 Client Error: Unauthorized for url: https://api.openweathermap.org/data/2.5/weather?appid=dd0c15cfa7c0f385e46fba5e11b424a1&q=London%2CUK
+2025-10-18 09:48:19,869 | WARNING | src.logger:warning:46 | Attempt 2 failed for London,UK. Retrying in 5 seconds...
+2025-10-18 09:48:25,128 | ERROR | src.logger:error:50 | Failed to fetch weather data for London,UK: 401 Client Error: Unauthorized for url: https://api.openweathermap.org/data/2.5/weather?appid=dd0c15cfa7c0f385e46fba5e11b424a1&q=London%2CUK
+2025-10-18 09:48:25,129 | ERROR | src.logger:error:50 | All retries failed for London,UK: API request failed: 401 Client Error: Unauthorized for url: https://api.openweathermap.org/data/2.5/weather?appid=dd0c15cfa7c0f385e46fba5e11b424a1&q=London%2CUK
+2025-10-18 09:48:25,410 | ERROR | src.logger:error:50 | Failed to fetch weather data for New York,US: 401 Client Error: Unauthorized for url: https://api.openweathermap.org/data/2.5/weather?appid=dd0c15cfa7c0f385e46fba5e11b424a1&q=New+York%2CUS
+2025-10-18 09:48:25,410 | WARNING | src.logger:warning:46 | Attempt 1 failed for New York,US. Retrying in 5 seconds...
+2025-10-18 09:48:30,654 | ERROR | src.logger:error:50 | Failed to fetch weather data for New York,US: 401 Client Error: Unauthorized for url: https://api.openweathermap.org/data/2.5/weather?appid=dd0c15cfa7c0f385e46fba5e11b424a1&q=New+York%2CUS
+2025-10-18 09:48:30,655 | WARNING | src.logger:warning:46 | Attempt 2 failed for New York,US. Retrying in 5 seconds...
+2025-10-18 09:48:35,885 | ERROR | src.logger:error:50 | Failed to fetch weather data for New York,US: 401 Client Error: Unauthorized for url: https://api.openweathermap.org/data/2.5/weather?appid=dd0c15cfa7c0f385e46fba5e11b424a1&q=New+York%2CUS
+2025-10-18 09:48:35,885 | ERROR | src.logger:error:50 | All retries failed for New York,US: API request failed: 401 Client Error: Unauthorized for url: https://api.openweathermap.org/data/2.5/weather?appid=dd0c15cfa7c0f385e46fba5e11b424a1&q=New+York%2CUS
+2025-10-18 09:48:36,135 | ERROR | src.logger:error:50 | Failed to fetch weather data for Tokyo,Japan: 401 Client Error: Unauthorized for url: https://api.openweathermap.org/data/2.5/weather?appid=dd0c15cfa7c0f385e46fba5e11b424a1&q=Tokyo%2CJapan
+2025-10-18 09:48:36,135 | WARNING | src.logger:warning:46 | Attempt 1 failed for Tokyo,Japan. Retrying in 5 seconds...
+2025-10-18 09:48:41,353 | ERROR | src.logger:error:50 | Failed to fetch weather data for Tokyo,Japan: 401 Client Error: Unauthorized for url: https://api.openweathermap.org/data/2.5/weather?appid=dd0c15cfa7c0f385e46fba5e11b424a1&q=Tokyo%2CJapan
+2025-10-18 09:48:41,354 | WARNING | src.logger:warning:46 | Attempt 2 failed for Tokyo,Japan. Retrying in 5 seconds...
+2025-10-18 09:48:46,611 | ERROR | src.logger:error:50 | Failed to fetch weather data for Tokyo,Japan: 401 Client Error: Unauthorized for url: https://api.openweathermap.org/data/2.5/weather?appid=dd0c15cfa7c0f385e46fba5e11b424a1&q=Tokyo%2CJapan
+2025-10-18 09:48:46,612 | ERROR | src.logger:error:50 | All retries failed for Tokyo,Japan: API request failed: 401 Client Error: Unauthorized for url: https://api.openweathermap.org/data/2.5/weather?appid=dd0c15cfa7c0f385e46fba5e11b424a1&q=Tokyo%2CJapan
+2025-10-18 09:48:46,831 | ERROR | src.logger:error:50 | Failed to fetch weather data for Sydney,Australia: 401 Client Error: Unauthorized for url: https://api.openweathermap.org/data/2.5/weather?appid=dd0c15cfa7c0f385e46fba5e11b424a1&q=Sydney%2CAustralia
+2025-10-18 09:48:46,831 | WARNING | src.logger:warning:46 | Attempt 1 failed for Sydney,Australia. Retrying in 5 seconds...
+2025-10-18 09:48:52,063 | ERROR | src.logger:error:50 | Failed to fetch weather data for Sydney,Australia: 401 Client Error: Unauthorized for url: https://api.openweathermap.org/data/2.5/weather?appid=dd0c15cfa7c0f385e46fba5e11b424a1&q=Sydney%2CAustralia
+2025-10-18 09:48:52,063 | WARNING | src.logger:warning:46 | Attempt 2 failed for Sydney,Australia. Retrying in 5 seconds...
+2025-10-18 09:48:57,313 | ERROR | src.logger:error:50 | Failed to fetch weather data for Sydney,Australia: 401 Client Error: Unauthorized for url: https://api.openweathermap.org/data/2.5/weather?appid=dd0c15cfa7c0f385e46fba5e11b424a1&q=Sydney%2CAustralia
+2025-10-18 09:48:57,314 | ERROR | src.logger:error:50 | All retries failed for Sydney,Australia: API request failed: 401 Client Error: Unauthorized for url: https://api.openweathermap.org/data/2.5/weather?appid=dd0c15cfa7c0f385e46fba5e11b424a1&q=Sydney%2CAustralia
+2025-10-18 09:48:57,315 | INFO | src.logger:info:42 | Saving 0 observations to database
+2025-10-18 09:48:57,316 | INFO | src.logger:info:42 | Successfully saved 0/0 observations
+2025-10-18 09:48:57,316 | INFO | src.logger:info:42 | ETL Pipeline completed successfully. Processed 0 locations, saved 0 records. Duration: 53.74 seconds
+2025-10-18 09:48:57,316 | INFO | src.logger:info:42 | Pipeline completed successfully
