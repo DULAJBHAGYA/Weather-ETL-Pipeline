@@ -111,14 +111,14 @@ const Dashboard: React.FC = () => {
           {filteredLocationData.map((locationData) => (
             <div 
               key={locationData.location} 
-              className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 border border-royal-blue-100"
+              className="bg-white rounded-3xl shadow-xl overflow-hidden hover:shadow-lg transition-shadow duration-300"
             >
-              <div className="bg-royal-blue-500 p-3 md:p-4">
+              <div className="bg-white p-3 md:p-4">
                 <div className="flex justify-between items-center">
-                  <h2 className="text-lg md:text-xl font-bold text-white">{locationData.location}</h2>
+                  <h2 className="text-lg md:text-xl font-semibold text-black">{locationData.location}</h2>
                   <span className="text-xl md:text-2xl">{getWeatherIcon(locationData.latest.weather_main)}</span>
                 </div>
-                <p className="text-royal-blue-100 text-xs md:text-sm">{formatDate(locationData.latest.timestamp)}</p>
+                <p className="text-gray-600 text-xs md:text-sm">{formatDate(locationData.latest.timestamp)}</p>
               </div>
               <div className="p-4 md:p-6">
                 <div className="flex justify-between items-center mb-3 md:mb-4">
