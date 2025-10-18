@@ -129,7 +129,7 @@ const Dashboard: React.FC = () => {
       <div className="relative z-10 mx-auto w-[90%] flex-grow flex flex-col">
         {/* Header */}
         <header className="mb-6 md:mb-8 text-left">
-          <h1 className="text-3xl md:text-3xl lg:text-4xl font-extrabold text-black mb-2">Weather Dashboard</h1>
+          <h1 className="text-3xl md:text-3xl lg:text-4xl font-extrabold text-black mb-2">TROPICAST Weather Dashboard</h1>
           <p className="text-black font-semibold text-lg md:text-lg">Real-time weather monitoring for Kandy, Colombo, and Anuradhapura</p>
           {/* Current date and time - same style as above text */}
           <p className="text-black font-semibold text-lg md:text-lg">{getCurrentDateTime()}</p>
