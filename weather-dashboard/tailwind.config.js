@@ -18,6 +18,9 @@ module.exports = {
           800: '#1e40af',
           900: '#1e3a8a',
         }
+      },
+      fontFamily: {
+        'sans': ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', 'sans-serif']
       }
     },
   },

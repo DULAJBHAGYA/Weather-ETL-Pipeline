@@ -35,3 +35,39 @@
 2025-10-18 09:48:57,316 | INFO | src.logger:info:42 | Successfully saved 0/0 observations
 2025-10-18 09:48:57,316 | INFO | src.logger:info:42 | ETL Pipeline completed successfully. Processed 0 locations, saved 0 records. Duration: 53.74 seconds
 2025-10-18 09:48:57,316 | INFO | src.logger:info:42 | Pipeline completed successfully
+2025-10-18 23:31:14,264 | INFO | src.logger:info:42 | Starting Weather ETL Pipeline with command: health
+2025-10-18 23:31:14,319 | INFO | src.logger:info:42 | Performing health check
+2025-10-18 23:31:20,075 | INFO | src.logger:info:42 | Starting Weather ETL Pipeline with command: run
+2025-10-18 23:31:20,085 | INFO | src.logger:info:42 | Starting Weather ETL Pipeline
+2025-10-18 23:31:20,085 | INFO | src.logger:info:42 | Processing 5 locations
+2025-10-18 23:31:20,497 | INFO | src.logger:info:42 | Successfully processed weather data for Colombo,Sri Lanka
+2025-10-18 23:31:20,727 | INFO | src.logger:info:42 | Successfully processed weather data for London,UK
+2025-10-18 23:31:20,957 | INFO | src.logger:info:42 | Successfully processed weather data for New York,US
+2025-10-18 23:31:21,188 | INFO | src.logger:info:42 | Successfully processed weather data for Tokyo,Japan
+2025-10-18 23:31:21,414 | INFO | src.logger:info:42 | Successfully processed weather data for Sydney,Australia
+2025-10-18 23:31:21,415 | INFO | src.logger:info:42 | Saving 5 observations to database
+2025-10-18 23:31:21,435 | INFO | src.logger:info:42 | Successfully saved 5/5 observations
+2025-10-18 23:31:21,435 | INFO | src.logger:info:42 | ETL Pipeline completed successfully. Processed 5 locations, saved 5 records. Duration: 1.35 seconds
+2025-10-18 23:31:21,435 | INFO | src.logger:info:42 | Pipeline completed successfully
+2025-10-18 23:31:30,452 | INFO | src.logger:info:42 | Starting Weather ETL Pipeline with command: health
+2025-10-18 23:31:30,461 | INFO | src.logger:info:42 | Performing health check
+2025-10-18 23:37:48,105 | INFO | src.logger:info:42 | Starting Weather ETL Pipeline with command: run
+2025-10-18 23:37:48,120 | INFO | src.logger:info:42 | Starting Weather ETL Pipeline
+2025-10-18 23:37:48,120 | INFO | src.logger:info:42 | Processing 3 locations
+2025-10-18 23:37:48,439 | INFO | src.logger:info:42 | Successfully processed weather data for Colombo,Sri Lanka
+2025-10-18 23:37:48,669 | INFO | src.logger:info:42 | Successfully processed weather data for Kandy,Sri Lanka
+2025-10-18 23:37:48,901 | INFO | src.logger:info:42 | Successfully processed weather data for Anuradhapura,Sri Lanka
+2025-10-18 23:37:48,902 | INFO | src.logger:info:42 | Saving 3 observations to database
+2025-10-18 23:37:48,935 | INFO | src.logger:info:42 | Successfully saved 3/3 observations
+2025-10-18 23:37:48,936 | INFO | src.logger:info:42 | ETL Pipeline completed successfully. Processed 3 locations, saved 3 records. Duration: 0.82 seconds
+2025-10-18 23:37:48,937 | INFO | src.logger:info:42 | Pipeline completed successfully
+2025-10-18 23:59:20,906 | INFO | src.logger:info:42 | Starting Weather ETL Pipeline with command: run
+2025-10-18 23:59:20,918 | INFO | src.logger:info:42 | Starting Weather ETL Pipeline
+2025-10-18 23:59:20,918 | INFO | src.logger:info:42 | Processing 3 locations
+2025-10-18 23:59:21,227 | INFO | src.logger:info:42 | Successfully processed weather data for Colombo,Sri Lanka
+2025-10-18 23:59:21,443 | INFO | src.logger:info:42 | Successfully processed weather data for Kandy,Sri Lanka
+2025-10-18 23:59:21,664 | INFO | src.logger:info:42 | Successfully processed weather data for Anuradhapura,Sri Lanka
+2025-10-18 23:59:21,665 | INFO | src.logger:info:42 | Saving 3 observations to database
+2025-10-18 23:59:21,676 | INFO | src.logger:info:42 | Successfully saved 3/3 observations
+2025-10-18 23:59:21,676 | INFO | src.logger:info:42 | ETL Pipeline completed successfully. Processed 3 locations, saved 3 records. Duration: 0.76 seconds
+2025-10-18 23:59:21,676 | INFO | src.logger:info:42 | Pipeline completed successfully
