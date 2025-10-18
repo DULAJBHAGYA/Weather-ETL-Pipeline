@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  weather-pipeline:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    container_name: weather-pipeline
+    volumes:
+      - ../db:/app/db
+      - ../logs:/app/logs
+      - ../docs:/app/docs
+      - ../.env:/app/.env
+    environment:
+      - SQLITE_DB=/app/db/weather.db
+      - LOG_FILE=/app/logs/pipeline.log
+    command: python -m src.main schedule
