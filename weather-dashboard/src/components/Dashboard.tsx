@@ -155,38 +155,7 @@ const Dashboard: React.FC = () => {
           ))}
         </div>
 
-        {/* Detailed Data Section */}
-        <div className="bg-white rounded-lg shadow-md p-4 md:p-6 mb-6 md:mb-8 border border-royal-blue-100">
-          <h2 className="text-xl md:text-2xl font-bold text-royal-blue-800 mb-4 md:mb-6">Detailed Weather Data</h2>
-          <div className="overflow-x-auto">
-            <table className="min-w-full divide-y divide-royal-blue-200">
-              <thead className="bg-royal-blue-50">
-                <tr>
-                  <th className="px-3 md:px-6 py-2 md:py-3 text-left text-xs md:text-xs font-medium text-royal-blue-800 uppercase tracking-wider">Location</th>
-                  <th className="px-3 md:px-6 py-2 md:py-3 text-left text-xs md:text-xs font-medium text-royal-blue-800 uppercase tracking-wider">Temp (°C)</th>
-                  <th className="px-3 md:px-6 py-2 md:py-3 text-left text-xs md:text-xs font-medium text-royal-blue-800 uppercase tracking-wider">Feels Like</th>
-                  <th className="px-3 md:px-6 py-2 md:py-3 text-left text-xs md:text-xs font-medium text-royal-blue-800 uppercase tracking-wider">Humidity</th>
-                  <th className="px-3 md:px-6 py-2 md:py-3 text-left text-xs md:text-xs font-medium text-royal-blue-800 uppercase tracking-wider">Pressure</th>
-                  <th className="px-3 md:px-6 py-2 md:py-3 text-left text-xs md:text-xs font-medium text-royal-blue-800 uppercase tracking-wider">Wind</th>
-                  <th className="px-3 md:px-6 py-2 md:py-3 text-left text-xs md:text-xs font-medium text-royal-blue-800 uppercase tracking-wider">Conditions</th>
-                </tr>
-              </thead>
-              <tbody className="bg-white divide-y divide-royal-blue-200">
-                {filteredLocationData.map((locationData) => (
-                  <tr key={`${locationData.location}-${locationData.latest.timestamp}`}>
-                    <td className="px-3 md:px-6 py-2 md:py-4 whitespace-nowrap text-xs md:text-sm font-medium text-royal-blue-900">{locationData.location}</td>
-                    <td className="px-3 md:px-6 py-2 md:py-4 whitespace-nowrap text-xs md:text-sm text-royal-blue-700">{locationData.latest.temperature_celsius}</td>
-                    <td className="px-3 md:px-6 py-2 md:py-4 whitespace-nowrap text-xs md:text-sm text-royal-blue-700">{locationData.latest.feels_like_celsius}</td>
-                    <td className="px-3 md:px-6 py-2 md:py-4 whitespace-nowrap text-xs md:text-sm text-royal-blue-700">{locationData.latest.humidity_percent}%</td>
-                    <td className="px-3 md:px-6 py-2 md:py-4 whitespace-nowrap text-xs md:text-sm text-royal-blue-700">{locationData.latest.pressure_hpa}</td>
-                    <td className="px-3 md:px-6 py-2 md:py-4 whitespace-nowrap text-xs md:text-sm text-royal-blue-700">{locationData.latest.wind_speed_ms}</td>
-                    <td className="px-3 md:px-6 py-2 md:py-4 whitespace-nowrap text-xs md:text-sm text-royal-blue-700 capitalize">{locationData.latest.weather_description}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </div>
+        
       </div>
     </div>
   );
