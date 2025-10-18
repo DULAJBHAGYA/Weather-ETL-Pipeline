@@ -14,7 +14,7 @@ class Config:
     """
     # OpenWeather API Configuration
     OWM_API_KEY: str = os.getenv("OWM_API_KEY", "")
-    LOCATIONS: List[str] = os.getenv("LOCATIONS", "Colombo,Sri Lanka;London,UK").split(";")
+    LOCATIONS: List[str] = os.getenv("LOCATIONS", "Colombo,Sri Lanka;Kandy,Sri Lanka;Anuradhapura,Sri Lanka;London,UK").split(";")
     
     # Database Configuration
     SQLITE_DB: str = os.getenv("SQLITE_DB", "./db/weather.db")
