@@ -3,9 +3,8 @@ import { mockLocationData } from '../mockData';
 import kandyImage from '../assets/kandy.png';
 import colomboImage from '../assets/colombo.png';
 import anuradhapuraImage from '../assets/anuradhapura.png';
-import { MdLocationOn } from "react-icons/md";
+import { MdLocationOn, MdWaterDrop } from "react-icons/md";
 import { RiTempColdFill } from "react-icons/ri";
-import { MdWaterDrop } from "react-icons/md";
 import { FaWind } from "react-icons/fa";
 
 const Dashboard: React.FC = () => {
