@@ -88,19 +88,19 @@ const Dashboard: React.FC = () => {
   };
 
   const getKPIIcon = (kpiname: string): React.ReactElement | null => {
-  switch (kpiname) {
-    case 'location':
+    switch (kpiname) {
+        case 'location':
       // The 'as ReactElement' assertion was already removed in the previous step
       return <MdLocationOn className="w-8 h-8 text-gray-600" />;
-    case 'temp':
+        case 'temp':
       return <RiTempColdFill className="w-8 h-8 text-gray-600" />;
-    case 'humidity':
+        case 'humidity':
       return <MdWaterDrop className="w-8 h-8 text-gray-600" />;
-    case 'wind':
+        case 'wind':
       return <FaWind className="w-8 h-8 text-gray-600" />;
-    default:
-      return null;
-  }
+        default:
+            return null;
+    }
 };
 
   const formatDate = (timestamp: string) => {
