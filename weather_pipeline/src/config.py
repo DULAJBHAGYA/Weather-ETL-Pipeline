@@ -28,7 +28,8 @@ class Config:
     LOG_FILE: str = os.getenv("LOG_FILE", "./logs/pipeline.log")
     
     # Scheduler Configuration
-    SCHEDULE_INTERVAL_HOURS: int = int(os.getenv("SCHEDULE_INTERVAL_HOURS", "1"))
+    # Default: 0.083 hours (5 minutes) for more frequent updates
+    SCHEDULE_INTERVAL_HOURS: float = float(os.getenv("SCHEDULE_INTERVAL_HOURS", "0.083"))
     
     # Retry Configuration
     MAX_RETRIES: int = int(os.getenv("MAX_RETRIES", "3"))

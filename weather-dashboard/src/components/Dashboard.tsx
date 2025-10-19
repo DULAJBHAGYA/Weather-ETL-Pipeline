@@ -1,13 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { mockLocationData } from '../mockData';
 import kandyImage from '../assets/kandy.png';
 import colomboImage from '../assets/colombo.png';
 import anuradhapuraImage from '../assets/anuradhapura.png';
-import { MdLocationOn, MdWaterDrop } from "react-icons/md";
+import { MdLocationOn, MdWaterDrop, MdSync } from "react-icons/md";
 import { RiTempColdFill } from "react-icons/ri";
 import { FaWind } from "react-icons/fa";
 
 interface WeatherData {
+  id: number;
   location: string;
   temperature_celsius: number;
   feels_like_celsius: number;
@@ -25,44 +26,72 @@ const Dashboard: React.FC = () => {
   const [weatherData, setWeatherData] = useState<WeatherData[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
+  const [lastUpdated, setLastUpdated] = useState<string>('');
+  const [isRefreshing, setIsRefreshing] = useState<boolean>(false);
+  
+  // Store the latest data IDs to detect changes
+  const latestDataIds = useRef<{[key: string]: number}>({});
 
   // Fetch weather data from the backend API
-  useEffect(() => {
-    const fetchWeatherData = async () => {
-      try {
-        setLoading(true);
-        // Try to fetch from our Python API server
-        const response = await fetch('http://localhost:8000/api/weather/latest');
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
+  const fetchWeatherData = useCallback(async () => {
+    try {
+      setIsRefreshing(true);
+      // Try to fetch from our Python API server
+      const response = await fetch('http://localhost:8000/api/weather/latest');
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      const data: WeatherData[] = await response.json();
+      
+      // Check if data has actually changed
+      const newDataIds: {[key: string]: number} = {};
+      let hasChanged = false;
+      
+      data.forEach(location => {
+        newDataIds[location.location] = location.id;
+        if (latestDataIds.current[location.location] !== location.id) {
+          hasChanged = true;
         }
-        const data = await response.json();
-        
+      });
+      
+      // Only update state if data has changed or it's the first load
+      if (hasChanged || weatherData.length === 0) {
         // Filter to only show Kandy, Colombo, and Anuradhapura (should already be filtered by API)
         const filteredData = data.filter((location: WeatherData) => 
           ['Kandy', 'Colombo', 'Anuradhapura'].includes(location.location)
         );
         
         setWeatherData(filteredData);
+        latestDataIds.current = newDataIds;
+        // Set last updated time in Sri Lanka timezone
+        const now = new Date();
+        setLastUpdated(now.toLocaleTimeString([], { 
+          hour: '2-digit', 
+          minute: '2-digit',
+          timeZone: 'Asia/Colombo'
+        }));
         setError(null);
-      } catch (err) {
-        console.error('Error fetching weather data:', err);
-        setError('Failed to fetch weather data. Using mock data instead.');
-        // Fallback to mock data if API fails
-        setWeatherData(mockLocationData.map(loc => loc.latest));
-      } finally {
-        setLoading(false);
       }
-    };
+    } catch (err) {
+      console.error('Error fetching weather data:', err);
+      setError('Failed to fetch weather data. Using mock data instead.');
+      // Fallback to mock data if API fails
+      setWeatherData(mockLocationData.map(loc => loc.latest));
+    } finally {
+      setLoading(false);
+      setIsRefreshing(false);
+    }
+  }, [weatherData.length]);
 
+  useEffect(() => {
     fetchWeatherData();
     
-    // Set up polling to refresh data every 5 minutes
-    const intervalId = setInterval(fetchWeatherData, 5 * 60 * 1000);
+    // Set up polling to refresh data every 1 minute (increased frequency)
+    const intervalId = setInterval(fetchWeatherData, 60 * 1000);
     
     // Clean up interval on component unmount
     return () => clearInterval(intervalId);
-  }, []);
+  }, [fetchWeatherData]);
 
   const getWeatherIcon = (weatherMain: string) => {
     switch (weatherMain.toLowerCase()) {
@@ -84,13 +113,19 @@ const Dashboard: React.FC = () => {
   };
 
   const formatTime = (timestamp: string) => {
-    return new Date(timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    // Convert UTC timestamp to local time (Sri Lanka is UTC+5:30)
+    const date = new Date(timestamp);
+    // For Sri Lanka, we add 5 hours and 30 minutes to UTC
+    return date.toLocaleTimeString([], { 
+      hour: '2-digit', 
+      minute: '2-digit',
+      timeZone: 'Asia/Colombo'
+    });
   };
 
   const getKPIIcon = (kpiname: string): React.ReactElement | null => {
     switch (kpiname) {
         case 'location':
-      // The 'as ReactElement' assertion was already removed in the previous step
       return <MdLocationOn className="w-8 h-8 text-gray-600" />;
         case 'temp':
       return <RiTempColdFill className="w-8 h-8 text-gray-600" />;
@@ -101,13 +136,9 @@ const Dashboard: React.FC = () => {
         default:
             return null;
     }
-};
-
-  const formatDate = (timestamp: string) => {
-    return new Date(timestamp).toLocaleDateString([], { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
   };
 
-  // Get current date and time
+  // Get current date and time in Sri Lanka timezone
   const getCurrentDateTime = () => {
     const now = new Date();
     return now.toLocaleString([], { 
@@ -116,7 +147,8 @@ const Dashboard: React.FC = () => {
       month: 'long', 
       day: 'numeric',
       hour: '2-digit', 
-      minute: '2-digit'
+      minute: '2-digit',
+      timeZone: 'Asia/Colombo'
     });
   };
 
@@ -157,12 +189,29 @@ const Dashboard: React.FC = () => {
       <div className="relative z-10 mx-auto w-[90%] flex-grow flex flex-col">
         {/* Header */}
         <header className="mb-6 md:mb-8 text-left">
-          <h1 className="text-3xl md:text-3xl lg:text-4xl font-extrabold text-black mb-2">TROPICAST Weather Dashboard</h1>
-          <p className="text-black font-semibold text-lg md:text-lg">Real-time weather monitoring for Kandy, Colombo, and Anuradhapura</p>
-          {/* Current date and time - same style as above text */}
-          <p className="text-black font-semibold text-lg md:text-lg">{getCurrentDateTime()}</p>
+          <div className="flex justify-between items-start">
+            <div>
+              <h1 className="text-3xl md:text-3xl lg:text-4xl font-extrabold text-black mb-2">TROPICAST Weather Dashboard</h1>
+              <p className="text-black font-semibold text-lg md:text-lg">Real-time weather monitoring for Kandy, Colombo, and Anuradhapura</p>
+              {/* Current date and time - same style as above text */}
+              <p className="text-black font-semibold text-lg md:text-lg">{getCurrentDateTime()}</p>
+            </div>
+            <button 
+              onClick={fetchWeatherData}
+              disabled={isRefreshing}
+              className={`p-2 rounded-full ${isRefreshing ? 'bg-gray-300' : 'bg-blue-100 hover:bg-blue-200'} transition-colors`}
+              title="Refresh data"
+            >
+              <MdSync className={`w-6 h-6 text-blue-600 ${isRefreshing ? 'animate-spin' : ''}`} />
+            </button>
+          </div>
           {loading && <p className="text-black font-semibold text-lg md:text-lg">Loading weather data...</p>}
           {error && <p className="text-red-500 font-semibold text-lg md:text-lg">{error}</p>}
+          {lastUpdated && !loading && (
+            <p className="text-green-600 font-semibold text-lg md:text-lg">
+              Last updated: {lastUpdated} {isRefreshing && "(Refreshing...)"}
+            </p>
+          )}
         </header>
 
         {/* Stats Overview */}
@@ -280,6 +329,7 @@ const Dashboard: React.FC = () => {
                   <div className="mt-3 md:mt-4 text-2xl text-gray-500">
                     Last updated: {formatTime(locationData.timestamp)}
                   </div>
+
                 </div>
               </div>
             </div>

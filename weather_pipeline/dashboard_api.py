@@ -2,7 +2,7 @@
 Simple Flask API to serve weather data for Kandy, Colombo, and Anuradhapura
 to the frontend dashboard.
 """
-from flask import Flask, jsonify
+from flask import Flask, jsonify, make_response
 from flask_cors import CORS
 from datetime import datetime
 import sys
@@ -26,10 +26,15 @@ db_manager = DatabaseManager(Config.get_database_url())
 @app.route('/api/health', methods=['GET'])
 def health_check():
     """Health check endpoint."""
-    return jsonify({
+    response = make_response(jsonify({
         "status": "healthy",
         "timestamp": datetime.utcnow().isoformat()
-    })
+    }))
+    # Disable caching for health check
+    response.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate'
+    response.headers['Pragma'] = 'no-cache'
+    response.headers['Expires'] = '0'
+    return response
 
 @app.route('/api/weather/latest', methods=['GET'])
 def get_latest_weather():
@@ -77,12 +82,21 @@ def get_latest_weather():
                         "snow_1h_mm": raw_data.get("snow", {}).get("1h", None)
                     })
             
-            return jsonify(weather_data)
+            response = make_response(jsonify(weather_data))
+            # Set cache control headers to prevent aggressive caching
+            response.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate'
+            response.headers['Pragma'] = 'no-cache'
+            response.headers['Expires'] = '0'
+            return response
         finally:
             session.close()
     except Exception as e:
         print(f"Error fetching latest weather data: {e}")
-        return jsonify({"error": str(e)}), 500
+        error_response = make_response(jsonify({"error": str(e)}), 500)
+        error_response.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate'
+        error_response.headers['Pragma'] = 'no-cache'
+        error_response.headers['Expires'] = '0'
+        return error_response
 
 @app.route('/api/weather/<location>', methods=['GET'])
 def get_weather_by_location(location):
@@ -96,7 +110,11 @@ def get_weather_by_location(location):
             ).order_by(WeatherObservation.fetched_at_utc.desc()).first()
             
             if not observation:
-                return jsonify({"error": f"No data found for location: {location}"}), 404
+                error_response = make_response(jsonify({"error": f"No data found for location: {location}"}), 404)
+                error_response.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate'
+                error_response.headers['Pragma'] = 'no-cache'
+                error_response.headers['Expires'] = '0'
+                return error_response
             
             # Use the to_dict method to get the data
             obs_dict = observation.to_dict()
@@ -126,12 +144,21 @@ def get_weather_by_location(location):
                 "snow_1h_mm": raw_data.get("snow", {}).get("1h", None)
             }
             
-            return jsonify(weather_data)
+            response = make_response(jsonify(weather_data))
+            # Set cache control headers to prevent aggressive caching
+            response.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate'
+            response.headers['Pragma'] = 'no-cache'
+            response.headers['Expires'] = '0'
+            return response
         finally:
             session.close()
     except Exception as e:
         print(f"Error fetching weather data for {location}: {e}")
-        return jsonify({"error": str(e)}), 500
+        error_response = make_response(jsonify({"error": str(e)}), 500)
+        error_response.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate'
+        error_response.headers['Pragma'] = 'no-cache'
+        error_response.headers['Expires'] = '0'
+        return error_response
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8000, debug=True)
