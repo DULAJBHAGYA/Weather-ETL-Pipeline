@@ -3,7 +3,7 @@ import { mockLocationData } from '../mockData';
 import kandyImage from '../assets/kandy.png';
 import colomboImage from '../assets/colombo.png';
 import anuradhapuraImage from '../assets/anuradhapura.png';
-import { FaLocationDot } from "react-icons/fa6";
+import { MdLocationOn } from "react-icons/md";
 import { RiTempColdFill } from "react-icons/ri";
 import { MdWaterDrop } from "react-icons/md";
 import { FaWind } from "react-icons/fa";
@@ -142,7 +142,7 @@ const Dashboard: React.FC = () => {
           <div className="p-8 rounded-3xl shadow-lg h-32 md:h-32 lg:h-32">
             <div className="flex items-center">
               <div className="p-6 bg-white/50 rounded-3xl">
-                <FaLocationDot className="w-8 h-8 text-gray-600" />
+                <MdLocationOn className="w-8 h-8 text-gray-600" />
               </div>
               <div className="ml-4">
                 <p className="text-lg font-medium text-gray-600">Locations Tracked</p>
