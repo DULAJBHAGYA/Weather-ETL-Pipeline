@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, ReactElement } from 'react';
 import { mockLocationData } from '../mockData';
 import kandyImage from '../assets/kandy.png';
 import colomboImage from '../assets/colombo.png';
@@ -7,9 +7,22 @@ import { MdLocationOn, MdWaterDrop } from "react-icons/md";
 import { RiTempColdFill } from "react-icons/ri";
 import { FaWind } from "react-icons/fa";
 
+interface WeatherData {
+  location: string;
+  temperature_celsius: number;
+  feels_like_celsius: number;
+  humidity_percent: number;
+  wind_speed_ms: number;
+  pressure_hpa: number;
+  visibility_meters: number;
+  weather_main: string;
+  weather_description: string;
+  timestamp: string;
+}
+
 const Dashboard: React.FC = () => {
   // State for weather data
-  const [weatherData, setWeatherData] = useState<any[]>([]);
+  const [weatherData, setWeatherData] = useState<WeatherData[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -26,7 +39,7 @@ const Dashboard: React.FC = () => {
         const data = await response.json();
         
         // Filter to only show Kandy, Colombo, and Anuradhapura (should already be filtered by API)
-        const filteredData = data.filter((location: any) => 
+        const filteredData = data.filter((location: WeatherData) => 
           ['Kandy', 'Colombo', 'Anuradhapura'].includes(location.location)
         );
         
@@ -74,16 +87,16 @@ const Dashboard: React.FC = () => {
     return new Date(timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
   };
 
-  const getKPIIcon = (kpiname: string): React.ReactElement | null => {
+  const getKPIIcon = (kpiname: string): ReactElement | null => {
     switch (kpiname) {
       case 'location':
-        return <MdLocationOn className="w-8 h-8 text-gray-600" />;
+        return <MdLocationOn className="w-8 h-8 text-gray-600" /> as ReactElement;
       case 'temp':
-        return <RiTempColdFill className="w-8 h-8 text-gray-600" />;
+        return <RiTempColdFill className="w-8 h-8 text-gray-600" /> as ReactElement;
       case 'humidity':
-        return <MdWaterDrop className="w-8 h-8 text-gray-600" />;
+        return <MdWaterDrop className="w-8 h-8 text-gray-600" /> as ReactElement;
       case 'wind':
-        return <FaWind className="w-8 h-8 text-gray-600" />;
+        return <FaWind className="w-8 h-8 text-gray-600" /> as ReactElement;
       default:
         return null;
     }
@@ -210,7 +223,7 @@ const Dashboard: React.FC = () => {
 
         {/* Weather Cards - flex-grow to fill remaining space */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 flex-grow">
-          {displayData.map((locationData: any) => (
+          {displayData.map((locationData: WeatherData) => (
             <div 
               key={locationData.location} 
               className="rounded-3xl shadow-xl overflow-hidden hover:shadow-lg transition-shadow duration-300 flex flex-col h-full relative"
