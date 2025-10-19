@@ -81,3 +81,50 @@
 2025-10-19 08:56:29,569 | INFO | src.logger:info:42 | Successfully saved 3/3 observations
 2025-10-19 08:56:29,569 | INFO | src.logger:info:42 | ETL Pipeline completed successfully. Processed 3 locations, saved 3 records. Duration: 0.92 seconds
 2025-10-19 08:56:29,569 | INFO | src.logger:info:42 | Pipeline completed successfully
+2025-10-19 11:10:58,379 | INFO | src.logger:info:42 | Starting Weather ETL Pipeline with command: run
+2025-10-19 11:10:58,397 | INFO | src.logger:info:42 | Starting Weather ETL Pipeline
+2025-10-19 11:10:58,397 | INFO | src.logger:info:42 | Processing 3 locations
+2025-10-19 11:10:58,766 | INFO | src.logger:info:42 | Successfully processed weather data for Colombo,Sri Lanka
+2025-10-19 11:10:58,998 | INFO | src.logger:info:42 | Successfully processed weather data for Kandy,Sri Lanka
+2025-10-19 11:10:59,238 | INFO | src.logger:info:42 | Successfully processed weather data for Anuradhapura,Sri Lanka
+2025-10-19 11:10:59,239 | INFO | src.logger:info:42 | Saving 3 observations to database
+2025-10-19 11:10:59,258 | INFO | src.logger:info:42 | Successfully saved 3/3 observations
+2025-10-19 11:10:59,259 | INFO | src.logger:info:42 | ETL Pipeline completed successfully. Processed 3 locations, saved 3 records. Duration: 0.86 seconds
+2025-10-19 11:10:59,259 | INFO | src.logger:info:42 | Pipeline completed successfully
+2025-10-19 11:12:31,103 | INFO | src.logger:info:42 | Starting Weather ETL Pipeline with command: run
+2025-10-19 11:12:31,121 | INFO | src.logger:info:42 | Starting Weather ETL Pipeline
+2025-10-19 11:12:31,121 | INFO | src.logger:info:42 | Processing 3 locations
+2025-10-19 11:12:31,405 | INFO | src.logger:info:42 | Successfully processed weather data for Colombo,Sri Lanka
+2025-10-19 11:12:31,614 | INFO | src.logger:info:42 | Successfully processed weather data for Kandy,Sri Lanka
+2025-10-19 11:12:31,817 | INFO | src.logger:info:42 | Successfully processed weather data for Anuradhapura,Sri Lanka
+2025-10-19 11:12:31,817 | INFO | src.logger:info:42 | Saving 3 observations to database
+2025-10-19 11:12:31,823 | INFO | src.logger:info:42 | Successfully saved 3/3 observations
+2025-10-19 11:12:31,823 | INFO | src.logger:info:42 | ETL Pipeline completed successfully. Processed 3 locations, saved 3 records. Duration: 0.70 seconds
+2025-10-19 11:12:31,823 | INFO | src.logger:info:42 | Pipeline completed successfully
+2025-10-19 11:14:34,115 | INFO | src.logger:info:42 | Starting Weather ETL Pipeline with command: schedule
+2025-10-19 11:14:34,116 | INFO | src.logger:info:42 | Starting scheduler with interval: 1 hours
+2025-10-19 11:14:49,236 | INFO | src.logger:info:42 | Starting Weather ETL Pipeline with command: schedule
+2025-10-19 11:14:49,237 | INFO | src.logger:info:42 | Starting scheduler with interval: 1 hours
+2025-10-19 11:15:00,353 | INFO | src.logger:info:42 | Starting Weather ETL Pipeline with command: schedule
+2025-10-19 11:15:00,354 | INFO | src.logger:info:42 | Starting scheduler with interval: 1 hours
+2025-10-19 11:15:00,355 | INFO | src.logger:info:42 | Scheduler started. ETL pipeline will run every 1 hour(s)
+2025-10-19 11:57:42,789 | INFO | src.logger:info:42 | Starting Weather ETL Pipeline with command: run
+2025-10-19 11:57:42,801 | INFO | src.logger:info:42 | Starting Weather ETL Pipeline
+2025-10-19 11:57:42,801 | INFO | src.logger:info:42 | Processing 3 locations
+2025-10-19 11:57:43,144 | INFO | src.logger:info:42 | Successfully processed weather data for Colombo,Sri Lanka
+2025-10-19 11:57:43,383 | INFO | src.logger:info:42 | Successfully processed weather data for Kandy,Sri Lanka
+2025-10-19 11:57:43,605 | INFO | src.logger:info:42 | Successfully processed weather data for Anuradhapura,Sri Lanka
+2025-10-19 11:57:43,606 | INFO | src.logger:info:42 | Saving 3 observations to database
+2025-10-19 11:57:43,618 | INFO | src.logger:info:42 | Successfully saved 3/3 observations
+2025-10-19 11:57:43,618 | INFO | src.logger:info:42 | ETL Pipeline completed successfully. Processed 3 locations, saved 3 records. Duration: 0.82 seconds
+2025-10-19 11:57:43,618 | INFO | src.logger:info:42 | Pipeline completed successfully
+2025-10-19 12:15:00,641 | INFO | src.logger:info:42 | Starting scheduled ETL job
+2025-10-19 12:15:00,735 | INFO | src.logger:info:42 | Starting Weather ETL Pipeline
+2025-10-19 12:15:00,736 | INFO | src.logger:info:42 | Processing 3 locations
+2025-10-19 12:15:01,075 | INFO | src.logger:info:42 | Successfully processed weather data for Colombo,Sri Lanka
+2025-10-19 12:15:01,309 | INFO | src.logger:info:42 | Successfully processed weather data for Kandy,Sri Lanka
+2025-10-19 12:15:01,547 | INFO | src.logger:info:42 | Successfully processed weather data for Anuradhapura,Sri Lanka
+2025-10-19 12:15:01,548 | INFO | src.logger:info:42 | Saving 3 observations to database
+2025-10-19 12:15:01,556 | INFO | src.logger:info:42 | Successfully saved 3/3 observations
+2025-10-19 12:15:01,556 | INFO | src.logger:info:42 | ETL Pipeline completed successfully. Processed 3 locations, saved 3 records. Duration: 0.82 seconds
+2025-10-19 12:15:01,556 | INFO | src.logger:info:42 | Scheduled ETL job completed successfully

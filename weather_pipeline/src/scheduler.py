@@ -42,15 +42,22 @@ class WeatherScheduler:
         
         self._running = True
         
-        # Schedule the job
+        # Schedule the job based on interval (supporting fractional hours)
         if schedule:
-            schedule.every(self.interval_hours).hours.do(self._run_etl_job)
+            if self.interval_hours >= 1:
+                schedule.every(int(self.interval_hours)).hours.do(self._run_etl_job)
+            else:
+                # Convert to minutes for intervals less than 1 hour
+                minutes = int(self.interval_hours * 60)
+                schedule.every(minutes).minutes.do(self._run_etl_job)
         
         # Run the scheduler in a separate thread
         self._thread = threading.Thread(target=self._run_scheduler, daemon=True)
         self._thread.start()
         
-        self.logger.info(f"Scheduler started. ETL pipeline will run every {self.interval_hours} hour(s)")
+        # Calculate interval in minutes for logging
+        interval_minutes = int(self.interval_hours * 60)
+        self.logger.info(f"Scheduler started. ETL pipeline will run every {interval_minutes} minute(s)")
     
     def stop_scheduler(self):
         """
