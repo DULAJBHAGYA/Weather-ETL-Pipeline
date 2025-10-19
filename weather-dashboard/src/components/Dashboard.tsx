@@ -1,4 +1,4 @@
-import React, { useState, useEffect, ReactElement } from 'react';
+import React, { useState, useEffect } from 'react';
 import { mockLocationData } from '../mockData';
 import kandyImage from '../assets/kandy.png';
 import colomboImage from '../assets/colombo.png';
@@ -87,20 +87,21 @@ const Dashboard: React.FC = () => {
     return new Date(timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
   };
 
-  const getKPIIcon = (kpiname: string): ReactElement | null => {
-    switch (kpiname) {
-      case 'location':
-        return <MdLocationOn className="w-8 h-8 text-gray-600" /> as ReactElement;
-      case 'temp':
-        return <RiTempColdFill className="w-8 h-8 text-gray-600" /> as ReactElement;
-      case 'humidity':
-        return <MdWaterDrop className="w-8 h-8 text-gray-600" /> as ReactElement;
-      case 'wind':
-        return <FaWind className="w-8 h-8 text-gray-600" /> as ReactElement;
-      default:
-        return null;
-    }
-  };
+  const getKPIIcon = (kpiname: string): React.ReactElement | null => {
+  switch (kpiname) {
+    case 'location':
+      // The 'as ReactElement' assertion was already removed in the previous step
+      return <MdLocationOn className="w-8 h-8 text-gray-600" />;
+    case 'temp':
+      return <RiTempColdFill className="w-8 h-8 text-gray-600" />;
+    case 'humidity':
+      return <MdWaterDrop className="w-8 h-8 text-gray-600" />;
+    case 'wind':
+      return <FaWind className="w-8 h-8 text-gray-600" />;
+    default:
+      return null;
+  }
+};
 
   const formatDate = (timestamp: string) => {
     return new Date(timestamp).toLocaleDateString([], { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
