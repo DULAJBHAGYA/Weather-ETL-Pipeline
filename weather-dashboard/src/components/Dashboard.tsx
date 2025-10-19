@@ -74,19 +74,20 @@ const Dashboard: React.FC = () => {
     return new Date(timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
   };
 
-   const getKPIIcon = (kpiname: string) => {
-    const reactIconMap: { [key: string]: any } = {
-      location: <MdLocationOn className="w-8 h-8 text-gray-600" />,
-      temp: <RiTempColdFill className="w-8 h-8 text-gray-600" />,
-      humidity: <MdWaterDrop className="w-8 h-8 text-gray-600" />,
-      wind: <FaWind className="w-8 h-8 text-gray-600" />
-    };
-
-    return {
-      reactIcon: reactIconMap[kpiname] || null
-    };
+  const getKPIIcon = (kpiname: string): React.ReactElement | null => {
+    switch (kpiname) {
+      case 'location':
+        return <MdLocationOn className="w-8 h-8 text-gray-600" />;
+      case 'temp':
+        return <RiTempColdFill className="w-8 h-8 text-gray-600" />;
+      case 'humidity':
+        return <MdWaterDrop className="w-8 h-8 text-gray-600" />;
+      case 'wind':
+        return <FaWind className="w-8 h-8 text-gray-600" />;
+      default:
+        return null;
+    }
   };
-
 
   const formatDate = (timestamp: string) => {
     return new Date(timestamp).toLocaleDateString([], { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
@@ -155,7 +156,7 @@ const Dashboard: React.FC = () => {
           <div className="p-8 rounded-3xl shadow-lg h-32 md:h-32 lg:h-32">
             <div className="flex items-center">
               <div className="p-6 bg-white/50 rounded-3xl">
-                {getKPIIcon('location').reactIcon}
+                {getKPIIcon('location')}
               </div>
               <div className="ml-4">
                 <p className="text-lg font-medium text-gray-600">Locations Tracked</p>
@@ -167,7 +168,7 @@ const Dashboard: React.FC = () => {
           <div className=" p-6 rounded-3xl shadow-lg h-32 md:h-32 lg:h-32">
             <div className="flex items-center">
               <div className="p-6 bg-white/50 rounded-3xl">
-                {getKPIIcon('temp').reactIcon}
+                {getKPIIcon('temp')}
               </div>
               <div className="ml-4">
                 <p className="text-lg font-medium text-gray-600">Avg Temperature</p>
@@ -181,7 +182,7 @@ const Dashboard: React.FC = () => {
           <div className=" p-6 rounded-3xl shadow-lg h-32 md:h-32 lg:h-32">
             <div className="flex items-center">
               <div className="p-6 bg-white/50 rounded-3xl">
-                {getKPIIcon('humidity').reactIcon}
+                {getKPIIcon('humidity')}
               </div>
               <div className="ml-4">
                 <p className="text-lg font-medium text-gray-600">Avg Humidity</p>
@@ -195,7 +196,7 @@ const Dashboard: React.FC = () => {
           <div className="p-6 rounded-3xl shadow-lg h-32 md:h-32 lg:h-32">
             <div className="flex items-center">
               <div className="p-6 bg-white/50 rounded-3xl">
-                {getKPIIcon('wind').reactIcon}
+                {getKPIIcon('wind')}
               </div>
               <div className="ml-4">
                 <p className="text-lg md:text-lg font-medium text-gray-600">Avg Wind Speed</p>
